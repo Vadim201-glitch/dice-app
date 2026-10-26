@@ -1,0 +1,19 @@
+{
+  "name": "Три кубика — помощник",
+  "short_name": "Три кубика",
+  "description": "Фэнтези-помощник для игры с тремя кубиками",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#160f24",
+  "theme_color": "#24152f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

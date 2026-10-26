@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#24152f" />
+    <meta
+      name="description"
+      content="Фэнтези-помощник для игры с тремя кубиками"
+    />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Три кубика — помощник</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Хроники удачного броска</p>
+        <h1>Три кубика</h1>
+        <p class="hero-text">
+          Собери линию на древнем поле и испытай милость счастливых углов.
+        </p>
+      </header>
+
+      <section class="score-panel" aria-label="Счёт игры">
+        <div class="score-item">
+          <span class="score-label">Раунд</span>
+          <strong id="round-value">1 / 3</strong>
+        </div>
+        <div class="score-item score-item-main">
+          <span class="score-label">Всего очков</span>
+          <strong id="total-score">0</strong>
+        </div>
+        <div class="score-item">
+          <span class="score-label">За раунд</span>
+          <strong id="round-score">0</strong>
+        </div>
+      </section>
+
+      <section class="game-card" aria-labelledby="board-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Игровое поле</p>
+            <h2 id="board-title">Найди путь трёх кубиков</h2>
+          </div>
+          <span class="corner-mark" aria-hidden="true">✦</span>
+        </div>
+
+        <div id="board" class="board" role="grid" aria-label="Игровое поле 5 на 5"></div>
+
+        <p id="round-message" class="round-message" aria-live="polite">
+          Нажмите кнопку, чтобы бросить кубики.
+        </p>
+
+        <div class="dice-area">
+          <div class="dice-heading">
+            <span class="section-kicker">Выпавшие значения</span>
+            <span class="dice-hint">Один бросок на раунд</span>
+          </div>
+          <div id="dice" class="dice-list" aria-live="polite"></div>
+        </div>
+
+        <button id="roll-button" class="primary-button" type="button">
+          Бросить кубики
+        </button>
+      </section>
+
+      <p class="offline-note"><span aria-hidden="true">✧</span> Игра работает без интернета</p>
+    </main>
+
+    <div id="result-modal" class="modal-backdrop" hidden>
+      <section class="result-modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <span class="modal-star" aria-hidden="true">✦</span>
+        <p class="section-kicker">Испытание завершено</p>
+        <h2 id="result-title">Итог игры</h2>
+        <p class="final-score-text">Вы набрали <strong id="final-score">0</strong> очков</p>
+        <p id="reward-text" class="reward-text">Ваша награда — 0 монет</p>
+        <button id="confirm-button" class="primary-button" type="button">ОК</button>
+      </section>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
