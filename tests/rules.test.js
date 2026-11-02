@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 
 import { getLines } from "../js/board.js";
 import { evaluateRoll } from "../js/rules.js";
-import { createGameState, getReward, playRound } from "../js/game.js";
+import { createGameState, getReward, playRound, simulateGames } from "../js/game.js";
 
 test("the board contains all 48 possible contiguous lines", () => {
   assert.equal(getLines().length, 48);
@@ -68,4 +68,20 @@ test("a game completes after three rounds", () => {
   assert.equal(state.completedRounds, 3);
   assert.equal(state.isComplete, true);
   assert.equal(playRound(state, random), state);
+});
+
+test("simulation returns 100 games and sums all rewards", () => {
+  const values = [0, 0.5, 5 / 6];
+  let index = 0;
+  const random = () => values[index++ % values.length];
+  const simulation = simulateGames(100, random);
+
+  assert.equal(simulation.games.length, 100);
+  assert.deepEqual(simulation.games[0], {
+    gameNumber: 1,
+    roundScores: [2, 2, 2],
+    totalScore: 6,
+    reward: 3,
+  });
+  assert.equal(simulation.totalCoins, 300);
 });

@@ -1,4 +1,4 @@
-const CACHE_NAME = "three-dice-helper-v2";
+const CACHE_NAME = "three-dice-helper-v3";
 const APP_SHELL = [
   "./",
   "./index.html",

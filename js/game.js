@@ -47,3 +47,34 @@ export function getReward(totalScore) {
 
   return 0;
 }
+
+export function simulateGames(gameCount = 100, random = Math.random) {
+  if (!Number.isInteger(gameCount) || gameCount < 1) {
+    throw new Error("The number of simulated games must be a positive integer.");
+  }
+
+  const games = [];
+
+  for (let gameNumber = 1; gameNumber <= gameCount; gameNumber += 1) {
+    const roundScores = [];
+
+    for (let round = 0; round < TOTAL_ROUNDS; round += 1) {
+      const result = evaluateRoll(rollDice(random));
+      roundScores.push(result.score);
+    }
+
+    const totalScore = roundScores.reduce((sum, score) => sum + score, 0);
+
+    games.push({
+      gameNumber,
+      roundScores,
+      totalScore,
+      reward: getReward(totalScore),
+    });
+  }
+
+  return {
+    games,
+    totalCoins: games.reduce((sum, game) => sum + game.reward, 0),
+  };
+}

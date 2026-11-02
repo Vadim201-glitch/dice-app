@@ -1,5 +1,5 @@
-import { createGameState, playRound } from "./game.js";
-import { getElements, render } from "./ui.js";
+import { createGameState, playRound, simulateGames } from "./game.js";
+import { getElements, render, renderSimulation } from "./ui.js";
 
 let state = createGameState();
 const elements = getElements();
@@ -9,6 +9,10 @@ render(state);
 elements.rollButton.addEventListener("click", () => {
   state = playRound(state);
   render(state);
+});
+
+elements.simulateButton.addEventListener("click", () => {
+  renderSimulation(simulateGames(100));
 });
 
 elements.resultModal.addEventListener("click", (event) => {

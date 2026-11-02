@@ -66,6 +66,44 @@
         </button>
       </section>
 
+      <section class="simulation-card" aria-labelledby="simulation-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Испытание удачи</p>
+            <h2 id="simulation-title">Сто игр за один бросок</h2>
+          </div>
+          <span class="corner-mark" aria-hidden="true">✧</span>
+        </div>
+        <p class="simulation-description">
+          Запустите 100 независимых игр и сравните результаты трёх раундов.
+        </p>
+        <button id="simulate-button" class="secondary-button" type="button">
+          Симулировать 100 игр
+        </button>
+
+        <div id="simulation-results" class="simulation-results" hidden>
+          <p class="simulation-total">
+            Всего получено монет: <strong id="simulation-total-coins">0</strong>
+          </p>
+          <div class="table-scroll">
+            <table>
+              <caption class="visually-hidden">Результаты 100 симулированных игр</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Игра</th>
+                  <th scope="col">Раунд 1</th>
+                  <th scope="col">Раунд 2</th>
+                  <th scope="col">Раунд 3</th>
+                  <th scope="col">Всего</th>
+                  <th scope="col">Монеты</th>
+                </tr>
+              </thead>
+              <tbody id="simulation-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <p class="offline-note"><span aria-hidden="true">✧</span> Игра работает без интернета</p>
     </main>
 

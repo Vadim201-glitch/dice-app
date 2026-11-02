@@ -9,6 +9,10 @@ const elements = {
   totalScore: document.querySelector("#total-score"),
   roundMessage: document.querySelector("#round-message"),
   rollButton: document.querySelector("#roll-button"),
+  simulateButton: document.querySelector("#simulate-button"),
+  simulationResults: document.querySelector("#simulation-results"),
+  simulationBody: document.querySelector("#simulation-body"),
+  simulationTotalCoins: document.querySelector("#simulation-total-coins"),
   resultModal: document.querySelector("#result-modal"),
   finalScore: document.querySelector("#final-score"),
   rewardText: document.querySelector("#reward-text"),
@@ -127,6 +131,31 @@ export function render(state) {
   renderBoard(state.lastResult);
   renderDice(state.lastRoll);
   renderFinalResult(state);
+}
+
+export function renderSimulation(simulation) {
+  elements.simulationBody.replaceChildren();
+
+  simulation.games.forEach((game) => {
+    const row = document.createElement("tr");
+    const values = [
+      game.gameNumber,
+      ...game.roundScores,
+      game.totalScore,
+      game.reward,
+    ];
+
+    values.forEach((value) => {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.append(cell);
+    });
+
+    elements.simulationBody.append(row);
+  });
+
+  elements.simulationTotalCoins.textContent = simulation.totalCoins;
+  elements.simulationResults.hidden = false;
 }
 
 export function getElements() {
